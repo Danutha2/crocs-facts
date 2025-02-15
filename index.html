@@ -1,96 +1,85 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crocodile Facts</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+        }
+
+        .fact-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .fact-container:hover {
+            transform: scale(1.05);
+        }
+
+        #fact-display {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        #new-fact-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #new-fact-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <div class="fact-container">
         <p id="fact-display">Click the button to see a random crocodile fact!</p>
         <button id="new-fact-btn">Show Random Fact</button>
     </div>
-    <script src="script.js"></script>
+    <script>
+        const facts = [
+            "Crocodiles are large aquatic reptiles found in tropical regions of Africa, Asia, the Americas, and Australia.",
+            "They have a powerful bite due to their strong jaw muscles, making them one of the most formidable predators.",
+            "Crocodiles are carnivorous and primarily feed on fish, birds, mammals, and occasionally smaller crocodiles.",
+            "They can live both in freshwater and saltwater environments, with some species being more adapted to one than the other.",
+            "Crocodiles have a lifespan that can exceed 70 years in the wild.",
+            "They are known for their ability to stay submerged underwater for up to an hour due to their efficient respiratory system.",
+            "Crocodiles have a unique heart structure with four chambers, similar to birds and mammals, which aids in efficient oxygenation.",
+            "They communicate through vocalizations, such as growls, hisses, and roars, especially during mating season.",
+            "Crocodiles are excellent swimmers, using their tails to propel themselves through the water.",
+            "They have a protective bony skin with scales called scutes, which provide armor-like protection."
+        ];
+
+        document.getElementById('new-fact-btn').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factDisplay = document.getElementById('fact-display');
+            factDisplay.textContent = facts[randomIndex];
+            factDisplay.style.animation = 'fadeIn 0.5s';
+            setTimeout(() => {
+                factDisplay.style.animation = '';
+            }, 500);
+        });
+    </script>
 </body>
 </html>
-```
-
-### 2. CSS (styles.css)
-
-```css
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f8ff;
-}
-
-.fact-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
-}
-
-.fact-container:hover {
-    transform: scale(1.05);
-}
-
-#fact-display {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-#new-fact-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#new-fact-btn:hover {
-    background-color: #45a049;
-}
-```
-
-### 3. JavaScript (script.js)
-
-```javascript
-const facts = [
-    "Crocodiles are large aquatic reptiles found in tropical regions of Africa, Asia, the Americas, and Australia.",
-    "They have a powerful bite due to their strong jaw muscles, making them one of the most formidable predators.",
-    "Crocodiles are carnivorous and primarily feed on fish, birds, mammals, and occasionally smaller crocodiles.",
-    "They can live both in freshwater and saltwater environments, with some species being more adapted to one than the other.",
-    "Crocodiles have a lifespan that can exceed 70 years in the wild.",
-    "They are known for their ability to stay submerged underwater for up to an hour due to their efficient respiratory system.",
-    "Crocodiles have a unique heart structure with four chambers, similar to birds and mammals, which aids in efficient oxygenation.",
-    "They communicate through vocalizations, such as growls, hisses, and roars, especially during mating season.",
-    "Crocodiles are excellent swimmers, using their tails to propel themselves through the water.",
-    "They have a protective bony skin with scales called scutes, which provide armor-like protection."
-];
-
-document.getElementById('new-fact-btn').addEventListener('click', () => {
-    const randomIndex = Math.floor(Math.random() * facts.length);
-    const factDisplay = document.getElementById('fact-display');
-    factDisplay.textContent = facts[randomIndex];
-    factDisplay.style.animation = 'fadeIn 0.5s';
-    setTimeout(() => {
-        factDisplay.style.animation = '';
-    }, 500);
-});
-
-
